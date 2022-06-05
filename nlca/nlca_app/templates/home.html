@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body style="background: #111; color: #FFFFFE">
+        <h1>NLCA Encryption</h1>
+        <form action="encr" method="post">
+            {% csrf_token %}
+            Enter Plain-Text: <input type="text" name="pt"><br>
+            Enter Key (128-Bit): <input type="text" name="key"><br>
+            <input type="submit">
+        </form>
+    </body>
+</html>
+

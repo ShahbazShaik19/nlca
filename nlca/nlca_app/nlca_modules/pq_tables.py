@@ -1,0 +1,73 @@
+7
+def P(k_val):
+    if(k_val=='0000'):         #0
+        return '0011'
+    elif(k_val=='0001'):       #1
+        return '1111'  
+    elif(k_val=='0010'):        #2
+        return '1110'
+    elif(k_val=='0011'):        #3
+        return '0000'
+    elif(k_val=='0100'):        #4
+        return '0101'
+    elif(k_val=='0101'):        #5
+        return '0100'
+    elif(k_val=='0110'):        #6
+        return '1011'
+    elif(k_val=='0111'):        #7
+        return '1100'
+    elif(k_val=='1000'):        #8
+        return '1101'
+    elif(k_val=='1001'):       #9
+        return '1010'  
+    elif(k_val=='1010'):        #A
+        return '1001'
+    elif(k_val=='1011'):        #B
+        return '0110'
+    elif(k_val=='1100'):        #C
+        return '0111'
+    elif(k_val=='1101'):        #D
+        return '1000'
+    elif(k_val=='1110'):        #E
+        return '0010'
+    elif(k_val=='1111'):        #F
+        return '0001'
+    else:
+        return 0
+
+def Q(k_val):
+    if(k_val=='0000'):         #0
+        return '1001'
+    elif(k_val=='0001'):       #1
+        return '1110'  
+    elif(k_val=='0010'):        #2
+        return '0101'
+    elif(k_val=='0011'):        #3
+        return '0110'
+    elif(k_val=='0100'):        #4
+        return '1010'
+    elif(k_val=='0101'):        #5
+        return '0010'
+    elif(k_val=='0110'):        #6
+        return '0011'
+    elif(k_val=='0111'):        #7
+        return '1100'
+    elif(k_val=='1000'):        #8
+        return '1111'
+    elif(k_val=='1001'):       #9
+        return '0000'  
+    elif(k_val=='1010'):        #A
+        return '0100'
+    elif(k_val=='1011'):        #B
+        return '1101'
+    elif(k_val=='1100'):        #C
+        return '0111'
+    elif(k_val=='1101'):        #D
+        return '1011'
+    elif(k_val=='1110'):        #E
+        return '0001'
+    elif(k_val=='1111'):        #F
+        return '1000'
+    else:
+        return 0
+
