@@ -1,5 +1,4 @@
-import random
-from pq_tables import * 
+from nlca_app.nlca_modules.pq_tables import * 
 
 #raw_key= rand_bin(16)
 #print(raw_key)

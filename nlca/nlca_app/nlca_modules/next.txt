@@ -1,0 +1,4 @@
+-> need to create a module that converts hex to bin
+-> give interface input to encryption
+-> add styles to the interface
+-> integrate aes,des etc. modules and also decryption and key processing modules to the existing project

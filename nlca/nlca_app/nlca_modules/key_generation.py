@@ -1,8 +1,8 @@
 #from bin_random import rand_bin
 #from logicop import xor
-from pq_tables import *
-from f_fun import f_fun
-from transf import *
+from nlca_app.nlca_modules.pq_tables import *
+from nlca_app.nlca_modules.f_fun import f_fun
+from nlca_app.nlca_modules.transf import *
 
 #raw_key= rand_bin(64)
 #print(raw_key)
