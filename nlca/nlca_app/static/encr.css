@@ -1,0 +1,11 @@
+h1{
+    text-align: center;
+    color: aqua;
+}
+input[type="text"]{
+    width: 80vw;
+    height: 3vw;
+    border-radius: 2vw;
+    border: 1px solid #ccc;
+    padding: 5px;
+}

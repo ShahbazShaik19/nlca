@@ -1,5 +1,5 @@
+from nlca_app.nlca_modules.hex_to_bin import hex_to_bin
 from nlca_app.nlca_modules.key_generation import key_gen
-from nlca_app.nlca_modules.bin_random import rand_bin
 from nlca_app.nlca_modules.encryption_round import encr_round
 from nlca_app.nlca_modules.bin_to_hex import b2h
 from nlca_app.nlca_modules.logicop import xor
@@ -9,9 +9,9 @@ from nlca_app.nlca_modules.logicop import xor
 def swap(b1, b2, b3, b4):
     return b2,b1,b4,b3 
 
-def encryption():          
-    raw_key= rand_bin(128)
-    plaintext= rand_bin(128)
+def encryption(pt, key):          
+    raw_key= hex_to_bin(key)
+    plaintext= hex_to_bin(pt)
     
     p1=plaintext[:32]
     p2=plaintext[32:64]
@@ -48,7 +48,7 @@ def encryption():
     r5_1,r5_2,r5_3,r5_4= encr_round(KKK,r4_1,r4_2,r4_3,r4_4)
 
 
-    return b2h(plaintext), b2h(KK1), b2h(KK2), b2h(KK3), b2h(KK4), b2h(KKK), b2h(r5_1+r5_2+r5_3+r5_4)
+    return b2h(KK1), b2h(KK2), b2h(KK3), b2h(KK4), b2h(KKK), b2h(r5_1+r5_2+r5_3+r5_4)
 
 
 # print("\nPlainText (128-Bit) =",b2h(plaintext))
