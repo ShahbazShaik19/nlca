@@ -1,13 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Encryption Result</title>
+        <title>Home</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--link href="css/style.css" rel="stylesheet"-->
+        {% load static %}
+        <link href="{% static 'encr.css' %}" rel="stylesheet">
     </head>
-    <body style="background: #111; color: #FFFFFE">
-        <h3>Result : {{result}}</h3>
-        <h1>{{test}}</h1>
+    <body>
+        <h1>NLCA Encryption and Decryption</h1>
+        <form action="encr" method="post" id="form">
+            {% csrf_token %}
+            <label>Enter Plain-Text:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="pt" id="pt"></label><br>
+            <input type="button" value="Generate PT" onclick="rand_bin(32, 'pt')">
+            <br>
+            <label>Enter Key (128-Bit): <input type="text" name="key" id="key"></label><br>
+            <input type="button" value="Generate Key" onclick="rand_bin(32, 'key')">
+            <br>
+            <input type="submit" value="Encrypt">
+        </form>
+        <div style="margin: auto; width:100%; text-align:center"><h2 style="display: none; display: {{display}}; padding: 0 15vw; margin-top: 4vw;">Encryption</h2><h2 style="display: none;  padding: 0 15vw; margin-top: 4vw;" id="decrypt_title">Decryption</h2></div>
+        <table style="display: none; margin-left: 10vw; display: {{display}}">
+            
+            <tr>
+                <th>Plain-Text</th>
+                <td>{{pt}}</td>
+            </tr>
+            <tr>
+            <tr>
+                <th>Key</th>
+                <td>{{key2}}</td>
+            </tr>
+                <th>Key1</th>
+                <td>{{kk1}}</td>
+            </tr>
+            <tr>
+                <th>Key2</th>
+                <td>{{kk2}}</td>
+            </tr>
+            <tr>
+                <th>Key3</th>
+                <td>{{kk3}}</td>
+            </tr>
+            <tr>
+                <th>Key4</th>
+                <td>{{kk4}}</td>
+            </tr>
+            <tr>
+                <th>Key5</th>
+                <td>{{kkk}}</td>
+            </tr>
+            <tr>
+                <th>Cipher-Text</th>
+                <td>{{ct2}}</td>
+            </tr>
+        </table>
+        
+        <table style="display: none;" id="decrypt_table">
+            
+             <tr>
+                <th>Cipher-Text</th>
+                <td>{{ct2}}</td>
+            </tr>
+            <tr>
+                <th>Key</th>
+                <td>{{key2}}</td>
+            </tr>
+            <tr>
+                <th>Key1</th>
+                <td>{{kkk}}</td>
+            </tr>
+            <tr>
+                <th>Key2</th>
+                <td>{{kk4}}</td>
+            </tr>
+            <tr>
+                <th>Key3</th>
+                <td>{{kk3}}</td>
+            </tr>
+            <tr>
+                <th>Key4</th>
+                <td>{{kk2}}</td>
+            </tr>
+            <tr>
+                <th>Key5</th>
+                <td>{{kk1}}</td>
+            </tr>
+            <tr>
+                <th>Plain-Text</th>
+                <td>{{pt}}</td>
+            </tr>
+            <tr>
+                <th>Execution time</th>
+                <td>{{time}}</td>
+            </tr>
+        </table>
+        <input style="display:none; display: {{display}};" type="button" name="" value="Decrypt" onclick="fun(this)">
     </body>
+    <script>
+        function fun(elem){
+            table=document.getElementById("decrypt_table");
+            title=document.getElementById("decrypt_title");
+            table.style.display="inline-block";
+            title.style.display="inline";
+            elem.style.display="none";
+        }
+        function rand_bin(n,id){
+            var s = "";
+            var hex = "0123456789ABCDEF";
+            for (var i = 0; i < n; i++) {
+                s += hex[Math.floor(Math.random() * 16)];
+            }
+            document.getElementById(id).value = s;
+        }
+    </script>
 </html>
+

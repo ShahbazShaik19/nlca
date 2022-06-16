@@ -1,15 +1,18 @@
 from nlca_app.nlca_modules.hex_to_bin import hex_to_bin
 from nlca_app.nlca_modules.key_generation import key_gen
-from nlca_app.nlca_modules.encryption_round import encr_round
+from nlca_app.nlca_modules.decryption_round import decr_round
 from nlca_app.nlca_modules.bin_to_hex import b2h
 from nlca_app.nlca_modules.logicop import xor
+import time
 
 
 #This function Swaps and returns the blocks
 def swap(b1, b2, b3, b4):
-    return b2,b1,b4,b3 
+    return b2,b1,b4,b3
 
-def encryption(pt, key):          
+
+def decryption(pt, key):
+    st= time.time()
     raw_key= hex_to_bin(key)
     plaintext= hex_to_bin(pt)
     
@@ -28,27 +31,30 @@ def encryption(pt, key):
 
     KKK=xor(xor(KK1,KK2),xor(KK3,KK4))
 
-    #round1
-    r1_1,r1_2,r1_3,r1_4= encr_round(KK1,p1,p2,p3,p4)
-    r1_1,r1_2,r1_3,r1_4= swap(r1_1,r1_2,r1_3,r1_4)
+   #round1
+    d1_1,d1_2,d1_3,d1_4= decr_round(KKK,p1,p2,p3,p4)
+    d1_1,d1_2,d1_3,d1_4= swap(d1_1,d1_2,d1_3,d1_4)
 
     #round2
-    r2_1,r2_2,r2_3,r2_4= encr_round(KK2,r1_1,r1_2,r1_3,r1_4)
-    r2_1,r2_2,r2_3,r2_4= swap(r2_1,r2_2,r2_3,r2_4)
+    d2_1,d2_2,d2_3,d2_4=decr_round(KK4,d1_1,d1_2,d1_3,d1_4)
+    d2_1,d2_2,d2_3,d2_4=swap(d2_1,d2_2,d2_3,d2_4)
 
     #round3
-    r3_1,r3_2,r3_3,r3_4= encr_round(KK3,r2_1,r2_2,r2_3,r2_4)
-    r3_1,r3_2,r3_3,r3_4= swap(r3_1,r3_2,r3_3,r3_4)
+    d3_1,d3_2,d3_3,d3_4= decr_round(KK3,d2_1,d2_2,d2_3,d2_4)
+    d3_1,d3_2,d3_3,d3_4=swap(d3_1,d3_2,d3_3,d3_4)
 
     #round4
-    r4_1,r4_2,r4_3,r4_4= encr_round(KK4,r3_1,r3_2,r3_3,r3_4)
-    r4_1,r4_2,r4_3,r4_4= swap(r4_1,r4_2,r4_3,r4_4)
+    d4_1,d4_2,d4_3,d4_4= decr_round(KK2,d3_1,d3_2,d3_3,d3_4)
+    d4_1,d4_2,d4_3,d4_4=swap(d4_1,d4_2,d4_3,d4_4)
 
     #round5
-    r5_1,r5_2,r5_3,r5_4= encr_round(KKK,r4_1,r4_2,r4_3,r4_4)
+    d5_1,d5_2,d5_3,d5_4= decr_round(KK1,d4_1,d4_2,d4_3,d4_4)
 
+    decrpttext=d5_1+d5_2+d5_3+d5_4
+    
+    et= time.time()
 
-    return b2h(KK1,True), b2h(KK2,True), b2h(KK3,True), b2h(KK4,True), b2h(KKK,True), b2h(r5_1+r5_2+r5_3+r5_4,False)
+    return b2h(KK1,True), b2h(KK2,True), b2h(KK3,True), b2h(KK4,True), b2h(KKK,True), b2h(decrpttext, True),str(et-st)
 
 
 # print("\nPlainText (128-Bit) =",b2h(plaintext))

@@ -1,64 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Home</title>
+        <title>Home | NLCA</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% load static %}
-        <link href="{% static 'encr.css' %}" rel="stylesheet">
+        <!--link href="css/style.css" rel="stylesheet"-->
     </head>
-    <body style="background: #111; color: #FFFFFE">
-        <h1>NLCA Encryption</h1>
-        <form action="encr" method="post">
-            {% csrf_token %}
-            Enter Plain-Text: <input type="text" name="pt" id="pt">
-            <input type="button" value="Generate PT" onclick="rand_bin(32, 'pt')">
-            <br>
-            Enter Key (128-Bit): <input type="text" name="key" id="key">
-            <input type="button" value="Generate Key" onclick="rand_bin(32, 'key')">
-            <br>
-            <input type="submit">
-        </form>
-        <table style="display: none; display: {{display}}">
-            <tr>
-                <th>Plain-Text</th>
-                <td>{{pt}}</td>
-            </tr>
-            <tr>
-                <th>Key1</th>
-                <td>{{kk1}}</td>
-            </tr>
-            <tr>
-                <th>Key2</th>
-                <td>{{kk2}}</td>
-            </tr>
-            <tr>
-                <th>Key3</th>
-                <td>{{kk3}}</td>
-            </tr>
-            <tr>
-                <th>Key4</th>
-                <td>{{kk4}}</td>
-            </tr>
-            <tr>
-                <th>Key5</th>
-                <td>{{kkk}}</td>
-            </tr>
-            <tr>
-                <th>Cipher-Text</th>
-                <td>{{ct}}</td>
-            </tr>
-        </table>
+    <body>
+        <div>
+            <h1>NLCA</h1>
+            <a href="encryption_home" ><input type="button" name="" value="Encryption"></a>
+            <a href="decryption_home" ><input type="button" name="" value="Decryption"></a>
+        </div>
     </body>
-    <script>
-        function rand_bin(n,id){
-            var s = "";
-            var hex = "0123456789ABCDEF";
-            for (var i = 0; i < n; i++) {
-                s += hex[Math.floor(Math.random() * 16)];
-            }
-            document.getElementById(id).value = s;
-        }
-    </script>
 </html>
-

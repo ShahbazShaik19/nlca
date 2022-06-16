@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load static %}
+        <link href="{% static 'encr.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <h1>NLCA Decryption</h1>
+        
+        <form action="decr" method="post" id="form">
+            {% csrf_token %}
+            <label>Enter Cipher-Text:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="pt" id="pt"></label><br>
+            <label>Enter Key (128-Bit): <input type="text" name="key" id="key"></label><br>
+            <input type="submit" value="Decrypt">
+        </form>
+
+        
+
+        <table style="display: none; display: {{display}}">
+            <tr>
+                <th>Cipher-Text</th>
+                <td>{{pt}}</td>
+            </tr>
+            <tr>
+                <th>Key1</th>
+                <td>{{kk1}}</td>
+            </tr>
+            <tr>
+                <th>Key2</th>
+                <td>{{kk2}}</td>
+            </tr>
+            <tr>
+                <th>Key3</th>
+                <td>{{kk3}}</td>
+            </tr>
+            <tr>
+                <th>Key4</th>
+                <td>{{kk4}}</td>
+            </tr>
+            <tr>
+                <th>Key5</th>
+                <td>{{kkk}}</td>
+            </tr>
+            <tr>
+                <th>Plain-Text</th>
+                <td>{{ct}}</td>
+            </tr>
+        </table>
+    </body>
+    <script>
+        function rand_bin(n,id){
+            var s = "";
+            var hex = "0123456789ABCDEF";
+            for (var i = 0; i < n; i++) {
+                s += hex[Math.floor(Math.random() * 16)];
+            }
+            document.getElementById(id).value = s;
+        }
+    </script>
+</html>
+
