@@ -1,9 +1,9 @@
+import time
 from nlca_app.nlca_modules.hex_to_bin import hex_to_bin
 from nlca_app.nlca_modules.key_generation import key_gen
 from nlca_app.nlca_modules.decryption_round import decr_round
 from nlca_app.nlca_modules.bin_to_hex import b2h
 from nlca_app.nlca_modules.logicop import xor
-import time
 
 
 #This function Swaps and returns the blocks
@@ -12,7 +12,9 @@ def swap(b1, b2, b3, b4):
 
 
 def decryption(pt, key):
-    st= time.time()
+
+    st=time.time()
+    
     raw_key= hex_to_bin(key)
     plaintext= hex_to_bin(pt)
     
@@ -53,8 +55,10 @@ def decryption(pt, key):
     decrpttext=d5_1+d5_2+d5_3+d5_4
     
     et= time.time()
-
+    print("execution time= ",et-st)
     return b2h(KK1,True), b2h(KK2,True), b2h(KK3,True), b2h(KK4,True), b2h(KKK,True), b2h(decrpttext, True),str(et-st)
+
+    
 
 
 # print("\nPlainText (128-Bit) =",b2h(plaintext))

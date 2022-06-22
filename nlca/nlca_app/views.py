@@ -1,8 +1,7 @@
-import re
+#import re
 from django.http import HttpResponse
 from django.shortcuts import render
 from nlca_app.nlca_modules.decryption import decryption
-from nlca_app.nlca_modules.encript import encript
 from nlca_app.nlca_modules.encryption import encryption
 
 
