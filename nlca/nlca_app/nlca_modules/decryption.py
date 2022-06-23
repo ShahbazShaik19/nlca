@@ -1,4 +1,5 @@
 import time
+from nlca_app.nlca_modules.ascii import btoa
 from nlca_app.nlca_modules.hex_to_bin import hex_to_bin
 from nlca_app.nlca_modules.key_generation import key_gen
 from nlca_app.nlca_modules.decryption_round import decr_round
@@ -56,7 +57,7 @@ def decryption(pt, key):
     
     et= time.time()
     print("execution time= ",et-st)
-    return b2h(KK1,True), b2h(KK2,True), b2h(KK3,True), b2h(KK4,True), b2h(KKK,True), b2h(decrpttext, True),str(et-st)
+    return b2h(KK1,True), b2h(KK2,True), b2h(KK3,True), b2h(KK4,True), b2h(KKK,True), b2h(decrpttext, True), btoa(decrpttext), str(et-st)
 
     
 

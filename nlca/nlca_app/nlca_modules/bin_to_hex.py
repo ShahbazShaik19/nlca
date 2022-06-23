@@ -7,6 +7,8 @@ def b2h(data, gap):
         if gap:
             if((i+1)%2==0 and i!=0):
                 ret_val+=' '
+        if ret_val=="00" or ret_val=="00 ":
+         ret_val=''
     return ret_val.upper()
 
 #print(b2h('10101011'))

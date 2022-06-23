@@ -1,3 +1,4 @@
+from nlca_app.nlca_modules.ascii import atoh
 from nlca_app.nlca_modules.hex_to_bin import hex_to_bin
 from nlca_app.nlca_modules.key_generation import key_gen
 from nlca_app.nlca_modules.encryption_round import encr_round
@@ -11,7 +12,7 @@ def swap(b1, b2, b3, b4):
 
 def encryption(pt, key):          
     raw_key= hex_to_bin(key)
-    plaintext= hex_to_bin(pt)
+    plaintext= hex_to_bin(atoh(pt))
     
     p1=plaintext[:32]
     p2=plaintext[32:64]
