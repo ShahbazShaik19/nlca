@@ -12,7 +12,7 @@
         <form action="encr" method="post" id="form">
             {% csrf_token %}
             <label>Enter Plain-Text:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="pt" id="pt"></label><br>
-            <input type="button" value="Generate PT" onclick="rand_bin(32, 'pt')">
+            <!--input type="button" value="Generate PT" onclick="rand_bin(32, 'pt')"-->
             <br>
             <label>Enter Key (128-Bit): <input type="text" name="key" id="key"></label><br>
             <input type="button" value="Generate Key" onclick="rand_bin(32, 'key')">
@@ -20,7 +20,7 @@
             <input type="submit" value="Encrypt">
         </form>
         <div style="margin: auto; width:100%; text-align:center"><h2 style="display: none; display: {{display}}; padding: 0 15vw; margin-top: 4vw;">Encryption</h2><h2 style="display: none;  padding: 0 15vw; margin-top: 4vw;" id="decrypt_title">Decryption</h2></div>
-        <table style="display: none; margin-left: 7vw; display: {{display}}">
+        <table style="display: none; margin-left: 5vw; display: {{display}}">
             
             <tr>
                 <th>Plain-Text (ASCII)</th>

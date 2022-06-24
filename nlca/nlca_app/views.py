@@ -1,4 +1,5 @@
 #import re
+import traceback
 from django.http import HttpResponse
 from django.shortcuts import render
 from nlca_app.nlca_modules.ascii import atoh
@@ -37,10 +38,12 @@ def encr(request):
         ct2=""
         for i in range(0,len(ct),2):
             ct2=ct2+ct[i:i+2]+" "
-        return render(request, "encryption.html", {"display" : "inline-block", "pt":pt, "pt2": pt2, "key2":key2, "kk1":kk1, "kk2":kk2, "kk3":kk3, "kk4":kk4, "kkk":kkk, "ct2":ct2, "ptd":pt_d, "pt_ascii": pt_ascii, "time":time})
+        return render(request, "encryption.html", {"display" : "inline-block", "pt":pt, "pt2": pt_hex, "key2":key2, "kk1":kk1, "kk2":kk2, "kk3":kk3, "kk4":kk4, "kkk":kkk, "ct2":ct2, "ptd":pt_d, "pt_ascii": pt_ascii, "time":time})
         # res= encryption()
         # return render(request, "encryption.html", {"result": res})
     except Exception as e:
+        print(e)
+        print(traceback.format_exc())
         return HttpResponse("<h1>Input Error Occurred!<h1><h2>Error Message: <h2>" + str(e))
 
 # def decr(request):

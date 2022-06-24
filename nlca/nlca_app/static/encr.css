@@ -49,15 +49,31 @@ input[type="button"]{
     margin-bottom: 8px;
 }
 table{
-    width: 42%;
+    width: 44%;
     margin: 0 auto ;
     margin-top: 2vw;
-    /* border-collapse: collapse; */
-    border: 1px solid #ccc;
+    /* c */
+    /* border: 1px solid #ccc; */
     padding: 10px;
+    border-collapse: collapse;
+    
     
 }
+th, td {
+    border: 1.5px solid #ccc;
+    border-collapse: collapse;
+    padding: 15px 10px;
+  }
+table td{
+    width: 42%;
+    word-wrap: break-word;
+white-space: pre-wrap;
+word-break: break-word;
+
+}
+
 th{
+    width: 20%;
     text-align: right;
     padding: 5px 20px;
     color: darkgoldenrod;
